@@ -1,0 +1,88 @@
+<!-- A simple matching game to learn basics of HTML, CSS, and Javascript -->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title> Matching Game </title>
+<!-- Styling the page -->
+<style> 
+	img{ 
+		position: absolute;
+	   }
+
+	div { 
+		position: absolute;
+		width: 500px;
+		height: 500px;
+	    }
+	 #rightSide { 
+			left: 500px;
+			border-left: 1px solid black;
+		    }
+		
+</style>
+
+</head>
+
+<body>
+<h1>Matching Game</h1>
+<p> Click on the extra smiling face on the left. </p>
+
+<!-- Partitioning the whole body into two parts -->
+<div id= "leftSide">
+</div>
+<div id= "rightSide">
+</div>
+
+<!-- The script where we clone the images based on users onclick action 
+also remove and recreate the image for the further process -->
+<script>
+	var numberOfFaces = 5;
+	var theLeftSide = document.getElementById("leftSide");
+	var theRightSide = document.getElementById("rightSide");
+	var theBody = document.getElementsByTagName("body")[0];
+
+	function generateFaces() {
+		while(theLeftSide.firstChild) {
+			theLeftSide.removeChild(theLeftSide.firstChild);
+		}
+		while(theRightSide.firstChild) {
+			theRightSide.removeChild(theRightSide.firstChild);
+		}
+		
+		for(i = 0; i< numberOfFaces; i++) {
+			element_image = document.createElement("img");
+			element_image.src= "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png"
+			element_image.style.top = Math.floor(Math.random()*401) + "px";
+			element_image.style.left = Math.floor(Math.random()*401) + "px";
+			theLeftSide.appendChild(element_image);
+		}
+		
+		leftSideImages = theLeftSide.cloneNode(true);
+		leftSideImages.removeChild(leftSideImages.lastChild);
+		theRightSide.appendChild(leftSideImages);
+		theLeftSide.lastChild.onclick = function nextLevel(event){
+                event.stopPropagation();
+                numberOfFaces += 5;
+                generateFaces();
+            }
+ 
+	}
+	generateFaces();
+
+
+		theBody.onclick = function gameOver() {
+
+    alert("Game Over!");
+
+
+
+    theBody.onclick = null;
+
+    theLeftSide.lastChild.onclick = null;
+
+
+}
+		
+</script>
+</body>
+</html>
