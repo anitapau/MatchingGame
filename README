@@ -1,3 +1,9 @@
-Click to match and find the odd image.
+Go to the the html file and run it in the browser
+You'll notice a set of smiley faces on each side of the game board 
+Click on the extra smiley face on the left side of the game board that is missing on the right side
+If you click the right smiley face, you progress to the next level
+On each level, more smiley faces are added, making it more difficult to find the extra smiley face
+If you click on the wrong face, game over
+
 
 Have fun!
